@@ -1,6 +1,6 @@
 package com.wf.messaging.configuration;
 
-import com.wf.messaging.amqpService.MessageReceiver;
+import com.wf.messaging.amqpService.MessageListener;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
@@ -10,9 +10,11 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+@ConditionalOnProperty(prefix = "spring.rabbitmq", name = "dynamic", matchIfMissing = true)
 @Configuration
 @EnableRabbit
 public class RabbitConfig {
@@ -49,7 +51,7 @@ public class RabbitConfig {
     }
 
     @Bean
-    MessageListenerAdapter listenerAdapter(MessageReceiver receiver) {
+    MessageListenerAdapter listenerAdapter(MessageListener receiver) {
         return new MessageListenerAdapter(receiver, "receiveMessage");
     }
 }

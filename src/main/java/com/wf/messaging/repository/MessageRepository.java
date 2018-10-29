@@ -1,11 +1,16 @@
 package com.wf.messaging.repository;
 
 import com.wf.messaging.domain.Message;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
-public interface MessageRepository extends CrudRepository<Message, Long> {
+public interface MessageRepository extends PagingAndSortingRepository<Message, Long> {
+    Message findByUuid(String uuid);
+
+    Page<Message> findAll(Pageable pageable);
 }

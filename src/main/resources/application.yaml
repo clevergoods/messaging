@@ -1,11 +1,6 @@
 info.app.version: 1.0
-
 server.port: 8987
 server.contextPath: /messaging
-spring.datasource.url: jdbc:postgresql://localhost:5432/messaging
-spring.datasource.username: postgres
-spring.datasource.password: root
-
 spring.jpa.properties.hibernate.show_sql: false
 spring.jpa.properties.hibernate.format_sql: true
 spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults: false
@@ -14,14 +9,23 @@ spring.jpa.hibernate.use-new-id-generator-mappings: true
 spring.jpa.properties.hibernate.enable_lazy_load_no_trans: true
 spring.jpa.hibernate.naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 spring.datasource.driver.classname: org.postgresql.Driver
+spring.data.rest.default-page-size: 10
 
-amqp.topic_exchangeName: spring-boot-exchange
-amqp.queue_name: spring-boot
+amqp.topic_exchangeName: messaging-exchange
+amqp.queue_name: messaging-queue
+
+process.thread.number: 5
+
+#create message from messsage request
+author_from_message_request_error: "Author of message isn't valid. "
+type_from_message_request_error: "Type of message isn't valid. "
+
 
 logging:
+  file: logs/messaging.log
   pattern:
     console: "%d %-5level %logger : %msg%n"
     file: "%d %-5level [%thread] %logger : %msg%n"
   level:
     org: ERROR
-    com.wf.cortana.moderation: INFO
+    com.wf.messaging: INFO
