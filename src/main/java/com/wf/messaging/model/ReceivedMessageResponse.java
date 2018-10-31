@@ -13,11 +13,9 @@ import org.springframework.http.HttpStatus;
 @Setter
 @AllArgsConstructor
 public class ReceivedMessageResponse {
-    @SerializedName("status")
     @JsonProperty("status")
     private HttpStatus status;
 
-    @SerializedName("uuid")
     @JsonProperty("uuid")
     private String uuid;
 }

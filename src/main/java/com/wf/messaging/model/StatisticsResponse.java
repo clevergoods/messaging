@@ -16,33 +16,26 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 public class StatisticsResponse {
-    @SerializedName("status")
     @JsonProperty("status")
     private HttpStatus status;
 
-    @SerializedName("uuid")
     @JsonProperty("uuid")
     private String uuid;
 
-    @SerializedName("messageType")
     @JsonProperty("messageType")
     private String messageType;
 
-    @SerializedName("receivedDate")
     @JsonProperty("receivedDate")
     @JsonFormat(pattern="yyyy-mm-dd hh:mm:ss")
     private Date receivedDate;
 
-    @SerializedName("processingTime")
     @JsonProperty("processingTime")
     private Long processingTime;
 
-    @SerializedName("processedDate")
     @JsonProperty("processedDate")
     @JsonFormat(pattern="yyyy-mm-dd hh:mm:ss")
     private Date processedDate;
 
-    @SerializedName("processName")
     @JsonProperty("processName")
     private String processName;
 }

@@ -16,22 +16,17 @@ import java.io.Serializable;
 public class Metainformation implements Serializable {
 
     @SerializedName("os")
-    @JsonProperty("os")
     private String osName;
 
     @SerializedName("ip")
-    @JsonProperty("ip")
     private String ipAddress;
 
     @SerializedName("browserName")
-    @JsonProperty("browserName")
     private String browserName;
 
     @SerializedName("browserVersion")
-    @JsonProperty("browserVersion")
     private String browserVersion;
 
     @SerializedName("dataSize")
-    @JsonProperty("dataSize")
     private Long contentLength;
 }

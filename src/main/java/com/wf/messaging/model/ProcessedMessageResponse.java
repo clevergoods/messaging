@@ -14,11 +14,10 @@ import org.springframework.http.HttpStatus;
 @Setter
 @AllArgsConstructor
 public class ProcessedMessageResponse {
-    @SerializedName("status")
+
     @JsonProperty("status")
     private HttpStatus status;
 
-    @SerializedName("message")
     @JsonProperty("message")
     private Message message;
 }
