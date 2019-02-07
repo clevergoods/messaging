@@ -25,7 +25,8 @@ CREATE TABLE messages (
     statistics_id bigint,
     data text DEFAULT NULL,
     organization varchar(50) NOT NULL,
-    metainformation text NOT NULL
+    metainformation text NOT NULL,
+    deleted boolean NOT NULL
 );
 
 CREATE TABLE messages_statistics (
@@ -33,7 +34,8 @@ id bigint DEFAULT nextval('public.messages_statistics_seq'::regclass) NOT NULL,
     received_date timestamp without time zone not null,
     processing_time_ms bigint,
     processed_date timestamp without time zone,
-    process_name varchar(50)
+    process_name varchar(50),
+    deleted boolean NOT NULL
 );
 ALTER TABLE ONLY public.messages ADD CONSTRAINT message_uuid_unique_constraint UNIQUE (uuid);
 ALTER TABLE ONLY public.messages ADD CONSTRAINT messages_pk PRIMARY KEY (id);

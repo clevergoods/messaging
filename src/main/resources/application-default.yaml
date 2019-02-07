@@ -3,6 +3,10 @@ server.port: 8987
 server.contextPath: /messaging
 spring.data.rest.default-page-size: 10
 
+spring.datasource.url: jdbc:postgresql://localhost:5432/messaging
+spring.datasource.username: postgres
+spring.datasource.password: postgres
+spring.datasource.driver.classname: org.postgresql.Driver
 
 spring.jpa.properties.hibernate.show_sql: false
 spring.jpa.properties.hibernate.format_sql: true
@@ -20,6 +24,8 @@ process.thread.number: 5
 #create message from messsage request
 author_from_message_request_error: "Author of message isn't valid. "
 type_from_message_request_error: "Type of message isn't valid. "
+
+
 
 
 logging:

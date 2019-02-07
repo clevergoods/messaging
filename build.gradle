@@ -16,7 +16,7 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-group = 'com.wf'
+group 'vlasov.by'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
@@ -24,37 +24,35 @@ repositories {
 	mavenCentral()
 }
 
-
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-amqp')
 	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
 	implementation('org.springframework.boot:spring-boot-starter-web')
 	implementation('org.springframework.boot:spring-boot-starter-data-rest')
-    compile('org.postgresql:postgresql')
+	compile group: 'postgresql', name: 'postgresql', version: '9.0-801.jdbc4'
 	compileOnly 'org.projectlombok:lombok:1.18.2'
     compile('org.modelmapper:modelmapper:1.1.0')
     compile('org.hibernate:hibernate-java8:5.3.7.Final')
-
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
     compile group: 'io.springfox', name: 'springfox-data-rest', version: '2.7.0'
     compile group: 'eu.bitwalker', name: 'UserAgentUtils', version: '1.20'
-    compile 'com.google.code.gson:gson:2.8.2'
-
+	compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-csv', version: '2.9.8'
+    compile group: 'org.json', name: 'json', version: '20180813'
+	compile 'com.google.code.gson:gson:2.8.2'
 
     testCompile 'org.springframework.boot:spring-boot-starter-test'
     testCompile 'org.powermock:powermock-module-junit4:1.7.4'
     testCompile 'com.h2database:h2'
 	testCompileOnly 'org.projectlombok:lombok'
-	
 }
 
 jar { archiveName = "${jar.baseName}.${jar.extension}" }
 
 bootRun {
-    jvmArgs = [
-            "-Xdebug",
-            "-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005",
-            "-Dspring.profiles.active=prod"
-    ]
+	jvmArgs = [
+			"-Xdebug",
+			"-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005",
+			"-Dspring.profiles.active=prod"
+	]
 }
